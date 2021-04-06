@@ -1,20 +1,4 @@
-# This dockerfile is intended for use in starting Kubernetes pods useful for
-# application development of network services written in golang from within
-# Kubernetes itself.
-
-# These pods are more "pets" than "cattle" and are expected to be used
-# interactively by developers during the development lifecycle.
-
-# Developers will need to be able to:
-# - pull from and push to Bitbucket repositories
-# - access AWS cloud resources with their IAM user
-# - edit, run and debug Golang service code in the pod
-# - expose ports listened to by running service code
-
-# Note that this dockerfile does not use multi-stage builds. Everything
-# needed is added in a single stage.
-
-FROM golang:1.16.2-buster
+FROM golang:1.16.3-buster
 
 # Install things as root user.
 RUN apt-get update && apt-get upgrade -y \
@@ -56,19 +40,17 @@ RUN apt-get update && apt-get upgrade -y \
     && rm -rf /var/lib/apt/lists/*s
     # Install Python tools.
 RUN pip3 install httpie pgcli
+    # Install yq.
+RUN wget -q https://github.com/mikefarah/yq/releases/download/v4.6.3/yq_linux_amd64.tar.gz -O - | \
+    tar xz && mv yq_linux_amd64 /usr/local/bin/yq
     # Add developer user with sudo access.
 RUN useradd -ms /usr/bin/zsh developer \
     && usermod -aG sudo developer \
     && echo 'developer:changeme' | chpasswd
 
-# Install things as developer user.
+# Switch to developer user.
 USER developer
 WORKDIR /home/developer
-RUN curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.39.0 \
-    && go get github.com/go-delve/delve/cmd/dlv@latest \
-    && go get golang.org/x/tools/gopls@latest \
-    && go get github.com/rakyll/hey@latest \
-    && go get github.com/mikefarah/yq/v4@latest
 
 # As this image needs to always run as a server, sleep forever so clients can
 # open shells in it.
