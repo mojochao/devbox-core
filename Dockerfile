@@ -51,6 +51,7 @@ RUN useradd -ms /usr/bin/zsh developer \
 # Switch to developer user.
 USER developer
 WORKDIR /home/developer
+RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # As this image needs to always run as a server, sleep forever so clients can
 # open shells in it.
