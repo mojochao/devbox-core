@@ -29,13 +29,17 @@ RUN apt-get update && apt-get upgrade -y \
         htop \
         jq \
         less \
+        libpq-dev \
         net-tools \
         netcat \
         openssh-client \
         postgresql-client \
         python3 \
+        python3-dev \
         python3-pip \
         python3-pkg-resources \
+        python3-psycopg2 \
+        python3-setuptools \
         readline-common \
         ripgrep \
         socat \
@@ -47,11 +51,13 @@ RUN apt-get update && apt-get upgrade -y \
         zip \
         zsh \
         man \
-    && rm -rf /var/lib/apt/lists/*s \
+    && apt-get autoclean \
+    && apt-get autoremove \
+    && rm -rf /var/lib/apt/lists/*s
     # Install Python tools.
-    && pip3 install httpie awscli \
+RUN pip3 install httpie pgcli
     # Add developer user with sudo access.
-    && useradd -ms /usr/bin/zsh developer \
+RUN useradd -ms /usr/bin/zsh developer \
     && usermod -aG sudo developer \
     && echo 'developer:changeme' | chpasswd
 
@@ -61,7 +67,8 @@ WORKDIR /home/developer
 RUN curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.39.0 \
     && go get github.com/go-delve/delve/cmd/dlv@latest \
     && go get golang.org/x/tools/gopls@latest \
-    && go get github.com/mikefarah/yq/v4
+    && go get github.com/rakyll/hey@latest \
+    && go get github.com/mikefarah/yq/v4@latest
 
 # As this image needs to always run as a server, sleep forever so clients can
 # open shells in it.
