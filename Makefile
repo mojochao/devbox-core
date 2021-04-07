@@ -39,7 +39,7 @@ help: ## Show this help
 .PHONY: docker-build
 docker-build: ## Build docker images
 	@echo 'building docker image $(IMAGE)'
-	DOCKER_BUILDKIT=1 docker build -f $(DOCKERFILE) -t $(IMAGE):latest .
+	DOCKER_BUILDKIT=1 docker build -f $(DOCKERFILE) --progress=plain -t $(IMAGE):latest .
 	docker tag $(IMAGE) $(IMAGE):$(VERSION)
 
 .PHONY: docker-push
