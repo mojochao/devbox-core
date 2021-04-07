@@ -1,5 +1,9 @@
 # Devbox-Core Releases
 
+## 0.5.0
+
+- Add usage docs and improve builds.
+
 ## 0.4.1
 
 - Use plain progress output in builds
