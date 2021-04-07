@@ -1,12 +1,16 @@
 # Devbox-Core Releases
 
+## 0.6.0
+
+- Add libreadline-dev package to image builds
+
 ## 0.5.0
 
-- Add usage docs and improve builds.
+- Add usage docs and improve image builds
 
 ## 0.4.1
 
-- Use plain progress output in builds
+- Use plain progress output in image builds
 
 ## 0.4.0
 

@@ -17,8 +17,8 @@ This development environment is a bit opinionated about the tools installed.
 These currently include:
 
 - Ubuntu 20.04 LTS base
-- Build essentials (gcc, gdb, git, make, etc)
-- Network essentials (ifconfig, ping, dig, ssh, traceroute, curl, wget, etc)
+- Build essentials (gcc, gdb, git, make, libs, etc)
+- Network essentials (ifconfig, ping, dig, ssh, traceroute, curl, wget, hey, wrk, etc)
 - Editors (emacs27, nano, neovim, vim)
 - Shells (sh, bash, zsh)
 - Scripting languages (Python, Perl, Lua, JavaScript)

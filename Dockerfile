@@ -29,6 +29,7 @@ RUN apt-get update && apt-get upgrade -y \
         less \
         liblua5.3-dev \
         libpq-dev \
+        libreadline-dev \
         libssl-dev \
         locate \
         lshw \
