@@ -1,5 +1,9 @@
 # Devbox-Core Releases
 
+## 0.8.0
+
+- Add libtool, libvterm and pkg-config to image
+
 ## 0.7.0
 
 - Add fd-find package for speedy searches

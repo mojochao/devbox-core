@@ -32,6 +32,8 @@ RUN apt-get update && apt-get upgrade -y \
         libpq-dev \
         libreadline-dev \
         libssl-dev \
+        libtool \
+        libvterm-dev \
         locate \
         lshw \
         lsof \
@@ -47,6 +49,7 @@ RUN apt-get update && apt-get upgrade -y \
         npm \
         openssh-client \
         pgcli \
+        pkg-config \
         postgresql-client \
         psmisc \
         python3 \
