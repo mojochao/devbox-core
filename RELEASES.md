@@ -1,5 +1,9 @@
 # Devbox-Core Releases
 
+## 0.7.0
+
+- Add fd-find package for speedy searches
+
 ## 0.6.0
 
 - Add libreadline-dev package to image builds

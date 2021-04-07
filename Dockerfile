@@ -13,6 +13,7 @@ RUN apt-get update && apt-get upgrade -y \
         cmdtest \
         curl \
         dnsutils \
+        fd-find \
         file \
         finger \
         fzf \
