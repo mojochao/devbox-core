@@ -43,12 +43,12 @@ docker-build: ## Build docker images
 	DOCKER_BUILDKIT=1 docker build -f $(DOCKERFILE) --progress=plain -t $(IMAGE):latest .
 
 .PHONY: docker-tag
-docker-tag: ## Tag docker image with $TAG (default: VERSION)
+docker-tag: ## Tag built image with $TAG (default: VERSION)
 	@echo 'tagging docker image $(IMAGE):$(TAG)'
 	docker tag $(IMAGE):latest $(IMAGE):$(TAG)
 
 .PHONY: docker-push
-docker-push: ## Push docker image to Docker Hub
-	@echo 'pushing docker image $(IMAGE):latest,$(VERSION) to Docker Hub'
+docker-push: ## Push image tags to Docker Hub
+	@echo 'pushing docker image $(IMAGE):latest,$(TAG) to Docker Hub'
 	docker push $(IMAGE):latest
 	docker push $(IMAGE):$(TAG)

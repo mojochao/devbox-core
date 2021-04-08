@@ -1,5 +1,10 @@
 # Devbox-Core Releases
 
+## 0.9.0
+
+- Remove oh-my-zsh install from image. Developers should just copy their
+  existing config to the devbox.
+
 ## 0.8.0
 
 - Add libtool, libvterm and pkg-config to image
