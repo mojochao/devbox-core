@@ -1,5 +1,9 @@
 # Devbox-Core Releases
 
+## 0.10.0
+
+- Add ssh keychain to image
+
 ## 0.9.0
 
 - Remove oh-my-zsh install from image. Developers should just copy their

@@ -26,6 +26,7 @@ RUN apt-get update && apt-get upgrade -y \
         httpie \
         iptables \
         jq \
+        keychain \
         kmod \
         less \
         liblua5.3-dev \
